@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<ul>
+   <h1>Фамилия: {{ object.surname }}</h1>
+    <p>Имя: {{ object.name }}</p>
+    <p>Отчество: {{ object.patronymic }}</p>
+    <p>День рождения: {{ object.birthday }}</p>
+    <a href="{%url 'app_vladislav_yurenya:update_author' object.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Редактировать</button>
+    </a><br><br>
+ <a href="{%url 'app_vladislav_yurenya:delete_author' object.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Удалить</button>
+    </a><br><br>
+    <a href="{%url 'app_vladislav_yurenya:all_book_and_authors' %}" >
+      <button class="glow-on-hover" type="sumbit">Назад</button>
+    </a>
+</ul>
+{% endblock %}

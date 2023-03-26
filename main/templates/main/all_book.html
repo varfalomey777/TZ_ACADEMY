@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h1>Все книги и авторы</h1>
+<a href="{% url 'app_vladislav_yurenya:create_book' %}">
+<button class = 'glow-on-hover' type="submit" >Добавить книгу</button>
+</a>
+<a href="{% url 'app_vladislav_yurenya:create_author' %}">
+<button class = 'glow-on-hover' type="submit" >Создать автора</button>
+</a>
+<h1>Список авторов:</h1>
+  <ul>
+  {% for i in author %}
+    <h1>{{ i.fio }}</h1>
+    <a href="{%url 'app_vladislav_yurenya:detail_author' i.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Подробнее</button>
+    </a>
+<hr>
+    {% endfor %}
+      </ul>
+<h1>Книги:</h1>
+  <ul>
+
+  {% for i in book %}
+    <h1>{{ i.title }}</h1>
+    <p><img class="img-articale-left thumb" src = "{{ i.photo.url }}" width="160px"></p>
+    {% for author in i.author.all %}
+    <p>Автор: {{ author.fio }}</p>
+    {% endfor %}
+    <a href="{%url 'app_vladislav_yurenya:detail_book' i.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Подробнее</button>
+    </a>
+
+{% endfor %}
+
+    </ul>
+{% endblock %}

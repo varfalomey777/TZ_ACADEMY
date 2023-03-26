@@ -1,0 +1,12 @@
+{%extends 'main/base.html'%}
+{%block content%}
+<h1>Редактирование книги</h1>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+      <button class="glow-on-hover" type="submit">Сохранить</button>
+</form><br>
+<a href="{%url 'app_vladislav_yurenya:detail_book' object.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Отмена</button>
+    </a>
+{%endblock%}

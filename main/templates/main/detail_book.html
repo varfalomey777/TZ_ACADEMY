@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<ul>
+   <h1>{{ object.title }}</h1>
+    <p><img class="img-articale-left thumb" src = "{{ object.photo.url }}" width="160px"> </p>
+    <p>Год издания: {{ object.year }}</p>
+    <p>Жанр: {{ object.genre }}</p>
+    <p>Количество страниц: {{ object.pages }}</p>
+    {% for author in object.author.all %}
+<p>Автор: {{ author.fio }}</p>
+{% endfor %}
+    <a href="{%url 'app_vladislav_yurenya:update_book' object.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Изменить</button>
+    </a><br><br>
+ <a href="{%url 'app_vladislav_yurenya:delete_book' object.pk%}" >
+      <button class="glow-on-hover" type="sumbit">Удалить</button>
+    </a><br><br>
+    <a href="{%url 'app_vladislav_yurenya:all_book_and_authors' %}" >
+      <button class="glow-on-hover" type="sumbit">Назад</button>
+    </a>
+</ul>
+{% endblock %}
